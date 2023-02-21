@@ -1,0 +1,363 @@
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/761e4c8e5c.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/fcc666e0d5.js" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,700;0,800;1,600;1,700&family=Poppins:wght@300;600;700;800&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: 'Open Sans','sans serif';
+        }
+        nav{
+            display: flex;
+            justify-content: space-around;
+            background-color: green;
+
+           
+        }
+        ul{
+            list-style: none;
+            display:flex;
+            justify-content:space-between;
+            align-items: center;
+            font-size: 20px;
+        }
+        li{
+            margin-left: 100px;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+
+        }
+        ul.show{
+            margin-left: -300px;
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+           
+        }
+        #hamburger.hamburger-button{
+            margin-left: -1200px;
+        }
+        img #nav-image .show{
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+        .shop-item {
+            margin: 30px;
+        }
+        .hamburger{
+            display: none;
+          
+        }
+
+        .shop-item-title {
+             display: block;
+             width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.shop-item-image {
+    height: 250px;
+}
+
+.shop-item-details {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.shop-item-price {
+    flex-grow: 1;
+    color: #333;
+}
+
+.shop-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.cart-header {
+    font-weight: bold;
+    font-size: 1.25em;
+    color: #333;
+}
+
+.cart-column {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin-right: 1.5em;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.cart-row {
+    display: flex;
+}
+
+.cart-item {
+    width: 45%;
+}
+
+.cart-price {
+    width: 20%;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.cart-quantity {
+    width: 35%;
+}
+
+.cart-item-title {
+    color: #333;
+    margin-left: .5em;
+    font-size: 1.2em;
+}
+
+.cart-item-image {
+    width: 75px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.btn-danger {
+    color: white;
+    background-color: #EB5757;
+    border: none;
+    border-radius: .3em;
+    font-weight: bold;
+}
+
+.btn-danger:hover {
+    background-color: #CC4C4C;
+}
+
+.cart-quantity-input {
+    height: 34px;
+    width: 50px;
+    border-radius: 5px;
+    border: 1px solid #56CCF2;
+    background-color: #eee;
+    color: #333;
+    padding: 0;
+    text-align: center;
+    font-size: 1.2em;
+    margin-right: 25px;
+}
+
+.cart-row:last-child {
+    border-bottom: 1px solid black;
+}
+
+.cart-row:last-child .cart-column {
+    border: none;
+}
+
+.cart-total {
+    text-align: end;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.cart-total-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: black;
+    margin-right: 20px;
+}
+
+.cart-total-price {
+    color: #333;
+    font-size: 1.1em;
+}
+
+.btn-purchase {
+    display: block;
+    margin: 40px auto 80px auto;
+    font-size: 1.75em;
+    color: white;
+    background-color: rgba(137, 43, 226, 0.685)
+}
+
+.main-footer {
+    background-color: #56CCF2;
+    color: white;
+    padding: .25em 0;
+    height: 400px;
+}
+
+.main-footer-container {
+    padding-top: 150px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-footer-container ul {
+    display:flex;
+    justify-content: center;
+}
+.main-footer-container h3{
+    margin-left: -20px;
+}
+.footer-nav{
+    margin-left: -150px;
+
+}
+
+.footer-nav li {
+    padding: 0 .5em;
+}
+
+.footer-nav img {
+    width: 30px;
+    height: 30px;
+}
+@media(max-width:750px){
+    /*nav{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        height: 150px;
+        justify-content:center;
+    }*/
+     nav ul{
+        display: none;
+    }
+    .hamburger{
+        margin-left: -420px;
+        display: block;
+        width: 40px;
+        height: 45px;
+        background-color: transparent;
+        color: white;
+        font-size: 30px;
+        border: none;
+
+
+    }
+
+}
+    </style>
+</head>
+<body >
+    <nav >
+       
+        <ul  id="nav-list">
+            <li style="width:40px ;height:100%;"><img src="Images/unnamed (3).jpg" style="width: 50px;height: 50px; margin-left: -180px;" id="nav-image"></li>
+            <li><a href="#search">Search  For Products</a></li>
+            <li><a href="#filter-by-category"> Filter Products</a></li>
+            <li><a href="#Products List">Products List</a></li>
+            <li><a href="#Shopping Cart">Shopping cart</a></li>
+            <li><a href="#main-footer">Contact us</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
+     
+    </nav>
+       
+   
+    <form class="search" id="search">
+        <input type="text" name="" id="find" placeholder="search here...." />
+        <button id="search" style="cursor: pointer;">Search</button>
+    </form>
+     <div class="filter-by-category" id="filter-by-category">
+        <h2 style="margin-top: 30px;">Filter By Category:</h2>
+        <div class="buttons">
+            <button  style="background-color: rgb(211, 43, 226); color: white;border-radius: 5px;cursor: pointer" class="All"> Show All</button>
+            <button  style="background-color: rgb(211, 43, 226); color:white; border-radius: 5px;cursor: pointer" class="Cognition">Cognition And Memory</button>
+            <button style="background-color: rgb(211, 43, 226); color: white; border-radius:5px;cursor: pointer" class="Sleep" >Sleep Supplements</button>
+            <button  style="background-color: rgb(211, 43, 226); color: white;border-radius: 5px;cursor: pointer"  class="Immunity">Immune System Support</button>
+        </div>
+    </div>
+    <div style="display: grid;grid-template-columns: 1fr 1fr 1fr 1fr;" id="Products List">
+        <div style="text-align:center;border-style: solid;border-width: 4px;border-color: aliceblue;" class="All Cognition container"> <img src="Images/102.avif" class="shop-item-image"><h3 style="color:green" class="shop-item-title">Complete B-Complex</h3>
+            <h4 style="color: blue;" class="shop-item-price">45SAR</h4><button style="margin-bottom: 50px;background-color: rgb(211, 43, 226);border-radius: 10px;border-color:rgb(211, 43, 226) ;cursor: pointer;color: white;" class="shop-item-button">ADD TO CART</button>
+        </div>
+        <div style="text-align:center;border-style: solid;border-width: 4px;border-color: aliceblue;" class="All Cognition container"><img src="Images/115.avif" class="shop-item-image"> <h3 style="color:green" class="shop-item-title">  Complete Vitamin B Complex</h3><h4 style="color: blue;" class="shop-item-price">42SAR</h4><button style="margin-bottom: 50px;background-color: rgb(211, 43, 226);border-radius: 10px; border-color:rgb(211, 43, 226) ;cursor: pointer;color: white;" class="shop-item-button">ADD TO CART</button>
+        </div>
+        <div style="text-align:center;border-style: solid;border-width: 4px;border-color: aliceblue;" class="All Cognition container"><img src="Images/45.avif" class="shop-item-image"><h3 style="color:green" class="shop-item-title"> Vitamin B Complex</h3><h4 style="color: blue;" class="shop-item-price">49SAR</h4><button style="margin-bottom: 50px;background-color: rgb(211, 43, 226);border-radius: 10px;border-color:rgb(211, 43, 226) ;cursor: pointer;color: white;" class="shop-item-button">ADD TO CART</button>
+        </div>
+        <div style="text-align:center;border-style: solid;border-width: 4px;border-color: aliceblue;" class="All Sleep container"> <img src="Images/180.avif" class="shop-item-image"> <h3 style="color:green" class="shop-item-title">Magnesium Caps</h3><h4 style="color: blue;" class="shop-item-price">66SAR</h4><button style="margin-bottom: 50px;background-color: rgb(211, 43, 226);border-radius: 10px;border-color:rgb(211, 43, 226) ;cursor: pointer;color: white;" class="shop-item-button">ADD TO CART</button>
+        </div>
+        <div style="text-align:center;border-style: solid;border-width: 4px;border-color: aliceblue;" class="All Sleep container"> <img src="Images/149.avif" class="shop-item-image"><h3 style="color:green" class="shop-item-title"> High absorption Magnesium</h3><h4 style="color: blue;" class="shop-item-price">75SAR</h4><button style="margin-bottom: 50px;background-color: rgb(211, 43, 226);border-radius: 10px;border-color:rgb(211, 43, 226) ;cursor: pointer;color: white;" class="shop-item-button">ADD TO CART</button>
+        </div>
+        <div style="text-align:center;border-style: solid;border-width: 4px;border-color: aliceblue;" class="All Immunity container"> <img src="Images/24.avif" class="shop-item-image"><h3 style="color:green" class="shop-item-title">Zinc</h3><h4 style="color: blue;" class="shop-item-price">57SAR</h4><button style="margin-bottom: 50px;background-color: rgb(211, 43, 226);border-radius: 10px;border-color:rgb(211, 43, 226) ;cursor: pointer;color: white;" class="shop-item-button">ADD TO CART</button>
+        </div>
+        <div style="text-align:center;border-style: solid;border-width: 4px;border-color: aliceblue;" class="All Cognition container"> <img src="Images/25.avif" class="shop-item-image" ><h3 style="color:green" class="shop-item-title">DMAE</h3><h4 style="color: blue;" class="shop-item-price">85SAR</h4><button style="margin-bottom: 50px;background-color: rgb(211, 43, 226);border-radius: 10px;border-color:rgb(211, 43, 226) ;cursor: pointer;color: white;" class="shop-item-button">ADD TO CART</button>
+        </div>
+        <div style="text-align:center;border-style: solid;border-width: 4px;border-color: aliceblue;" class="All Immunity container"> <img src="Images/53.avif" class="shop-item-image"><h3 style="color:green" class="shop-item-title">SODIUM ASCORBATE</h3><h4 style="color: blue;" class="shop-item-price">33SAR</h4><button style="margin-bottom: 50px;background-color: rgb(211, 43, 226);border-radius: 10px;border-color:rgb(211, 43, 226) ;cursor: pointer;color: white;" class="shop-item-button">ADD TO CART</button>
+        </div>
+        <div style="text-align:center;border-style: solid;border-width: 4px;border-color: aliceblue;" class="All Immunity container"> <img src="Images/174.avif" class="shop-item-image"><h3 style="color:green" class="shop-item-title"> Vitamin D3</h3><h4 style="color: blue;" class="shop-item-price">28SAR</h4><button style="margin-bottom: 50px;background-color: rgb(211, 43, 226);border-radius: 10px;border-color:rgb(211, 43, 226) ;cursor: pointer;color: white;" class="shop-item-button">ADD TO CART</button>
+        </div>
+        <div style="text-align:center;border-style: solid;border-width: 4px;border-color: aliceblue;" class="All Cognition container"> <img src="Images/7.avif" class="shop-item-image"><h3 style="color:green" class="shop-item-title">ALPHA GPC</h3><h4 style="color: blue;" class="shop-item-price">110SAR</h4><button style="margin-bottom: 50px;background-color: rgb(211, 43, 226);border-radius: 10px;border-color:rgb(211, 43, 226) ;cursor: pointer;color: white;" class="shop-item-button">ADD TO CART</button>
+        </div>
+        <div style="text-align:center;border-style: solid;border-width: 4px;border-color: aliceblue;" class="All Immunity container"> <img src="Images/8.avif" class="shop-item-image"><h3 style="color:green"class="shop-item-title">Zinc Citrate</h3><h4 style="color: blue;" class="shop-item-price">65SAR</h4><button style="margin-bottom: 50px;background-color: rgb(211, 43, 226);border-radius: 10px;border-color:rgb(211, 43, 226) ;cursor: pointer;color: white;" class="shop-item-button">ADD TO CART</button>
+        </div>
+        <div style="text-align:center;border-style: solid;border-width: 4px;border-color: aliceblue;" class="All Cognition container"> <img src="Images/10.avif" class="shop-item-image"><h3 style="color:green" class="shop-item-title">L-Theanine</h3><h4 style="color: blue;" class="shop-item-price">48SAR</h4><button style="margin-bottom: 50px;background-color: rgb(211, 43, 226);;border-radius: 10px;border-color:rgb(211, 43, 226) ;cursor: pointer;color: white;" class="shop-item-button">ADD TO CART</button>
+        </div>
+    </div>
+    <div id="Shopping Cart" style="display: block;">
+        <section class="container content-section">
+            <h2 class="section-header">CART</h2>
+            <div class="cart-row">
+                <span class="cart-item cart-header cart-column">ITEM</span>
+                <span class="cart-price cart-header cart-column">PRICE</span>
+                <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+            </div>
+            <div class="cart-items">
+            </div>
+            <div class="cart-total">
+                <strong class="cart-total-title">Total</strong>
+                <span class="cart-total-price">0 SAR</span>
+            </div>
+            <button class="btn btn-primary btn-purchase" type="button" style="cursor: pointer;border-radius: 4px; border:none;width: 200px;height:40px
+            ">PURCHASE</button>
+        </section>
+        
+        
+    </div>
+    <footer class="main-footer" id="main-footer">
+        <div class="container main-footer-container">
+            <h3 class="band-name">Contact Us</h3>
+            <ul class="nav footer-nav">
+                <li>
+                    <a href="https://www.youtube.com/c/iherb" target="_blank">
+                        <img src="Images/Youtube Logo.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/iHerb?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">
+                        <img src="Images/download.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/iherbarabic/?brand_redir=76133747003" target="_blank">
+                        <img src="Images/Facebook Logo.png">
+                    </a>
+                </li>
+            </ul>
+            <div class="copyright">@Copyright <a href="https://www.iherb.com/"> iHerb </a> 2023- All Rights Reserved.   
+            </div>
+        </div>
+    </footer>
+    <script src="iHerb.js"></script>
+
+    
+</body>
+</html>
+    
