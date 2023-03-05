@@ -1,167 +1,213 @@
-//creating the hamburgur menu button
-const hamburgerButton = document.getElementById('hamburger');
-const navList = document.getElementById('nav-list');
-const navImage=document.getElementById('nav-image');
-function toggleButton() {
-    navList.classList.toggle('show');
-    navImage.style.display='none';
-    hamburgerButton.classList.toggle('hamburger-button');
-}
+document.addEventListener('DOMContentLoaded',()=>{
+    //creating the hamburgur menu button
+    const hamburgerButton = document.getElementById('hamburger');
+    const navList = document.getElementById('nav-list');
+    const navImage=document.getElementById('nav-image');
+    function toggleButton() {
+        navList.classList.toggle('show');
+        navImage.style.display='none';
+        hamburgerButton.classList.toggle('hamburger-button');
+    }
 
-hamburgerButton.addEventListener('click', toggleButton);
-//creating the search functionality
-const searchBar=document.querySelector('.search');
-const input=searchBar.querySelector('input');
-input.addEventListener('keyup',e=>{
-    e.preventDefault();
-    const term=e.target.value.toLowerCase();
-    console.log(term);
-    const products=document.querySelectorAll('h3');
-    console.log(products);
-    Array.from(products).forEach(product => {
-        const title=product.textContent;
-        const container=product.parentElement;
-        if((title.toLowerCase()).indexOf(term)!=-1){
-            container.style.display='block';
-        }else{
-            container.style.display='none';
-        }
-    });
-})
-//creating the filtering functionality
-let All=document.querySelector('body > div.filter-by-category > div > button.All');
-let Cognition=document.querySelector('body > div.filter-by-category > div > button.Cognition');
-let Sleep=document.querySelector('body > div.filter-by-category > div > button.Sleep');
-let Immunity=document.querySelector('body > div.filter-by-category > div > button.Immunity');
-console.log(Immunity);
-let list=[];
-list[0]=All;
-list[1]=Cognition;
-list[2]=Sleep;
-list[3]=Immunity;
-let containers=document.querySelectorAll('.container');
-console.log(containers[9].className);
-list.forEach(b=>{
-    b.addEventListener('click',e=>{
-        document.getElementById("Shopping Cart").style.visibility = 'visible';
-        containers.forEach(con=>{
-            if((con.className).includes(b.className)){
-                con.style.display='block';
+    hamburgerButton.addEventListener('click', toggleButton);
+    //searchBar functionality
+    const form=document.forms['search'];
+    const containers=document.querySelectorAll('.All.container');
+    searchBar=form.querySelector('input');
+    searchBar.addEventListener('keyup',(e)=>{
+        e.preventDefault();
+        const value=e.target.value.toLowerCase();
+        containers.forEach(container=>{
+            const productName=container.querySelector('h3').textContent;
+            if((productName.toLowerCase().indexOf(value))!=-1){
+                container.style.display='block'; 
             }else{
-                con.style.display='none';
+                container.style.display='none';
             }
+
         })
     })
-})
-let removeCartItemButtons=document.getElementsByClassName('btn-danger');
-for(let i=0;i<removeCartItemButtons.length;i++){
-    let button=removeCartItemButtons[i];
-    button.addEventListener('click',(event)=>{
-        buttonClicked=event.target;
-        buttonClicked.parentElement.parentElement.remove();
-        updateCartTotal();
+    //Filtering functionality
+    const All=document.querySelector('div.buttons .All');
+    const Congnition=document.querySelector('div.buttons .Cognition');
+    const Sleep=document.querySelector('div.buttons .Sleep');
+    const Immunity=document.querySelector('div.buttons .Immunity');
+    const filterButtons=[];
+    filterButtons[0]=All;
+    filterButtons[1]=Congnition;
+    filterButtons[2]=Sleep;
+    filterButtons[3]=Immunity;
+    filterButtons.forEach((filterButton)=>{
+        filterButton.addEventListener('click',e=>{
+            e.preventDefault();
+            containers.forEach((container)=>{
+                if(container.className.includes(filterButton.className)){
+                    container.style.display='block';
+                }else{
+                    container.style.display='none';
+                }
+            })
+        })
     })
-}
-let quantityInputs=document.getElementsByClassName('cart-quantity-input');
-for(let i=0;i<quantityInputs.length;i++){
-    let input=quantityInputs[i];
-    input.addEventListener('change',(event)=>{
-        let input=event.target;
-        if(isNaN(input.value)||input.value<=0){
-            input.value=1;
-        }
-        updateCartTotal();
+    //Remove cart rows
+    const buttonsClicked=document.querySelectorAll('.btn-danger');
+    buttonsClicked.forEach((buttonClicked)=>{
+        buttonClicked.addEventListener('click',(e)=>{
+            buttonClicked.parentElement.parentElement.remove();
+            updateCartTotal();
+        })
+    })
+     //making the add to car buttons work
+    const addToCartButtons=document.getElementsByClassName('shop-item-button');
+    for(let i=0;i<addToCartButtons.length;i++){
+        let button=addToCartButtons[i];
+        button.addEventListener('click',addToCartClicked);
+        //remove cart rows and update the total
+        const buttonsClicked=document.querySelectorAll('.btn-danger');
+        buttonsClicked.forEach((buttonClicked)=>{
+        buttonClicked.addEventListener('click',(e)=>{
+        buttonClicked.parentElement.parentElement.remove();
+        updateCartTotal();})})
 
-})}
-let addToCartButtons=document.getElementsByClassName('shop-item-button');
-for(let i=0;i<addToCartButtons.length;i++){
-    let button=addToCartButtons[i];
-    button.addEventListener('click',(event)=>{
-        let button=event.target;
+    }
+    function addToCartClicked(e){
+        let button=e.target;
         let shopItem=button.parentElement;
-        console.log(shopItem);
-        let title=shopItem.getElementsByClassName("shop-item-title")[0].textContent;
-        let price=shopItem.getElementsByClassName('shop-item-price')[0].textContent;
+        let title=shopItem.getElementsByClassName('shop-item-title')[0].innerText;
+        let price=shopItem.getElementsByClassName('shop-item-price')[0].innerText;
         let imageSrc=shopItem.getElementsByClassName('shop-item-image')[0].src;
         console.log(title,price,imageSrc);
-        addItemToCart(title,price,imageSrc);
-        updateCartTotal();
-    })}
-   
-let addItemToCart=(title,price,imageSrc)=>{
-    let cartRow=document.createElement('div');
-    cartRow.classList.add('cart-row');
-    let cartItems=document.getElementsByClassName('cart-items')[0];
-    console.log(cartItems);
-    let cartItemNames=cartItems.getElementsByClassName('cart-item-title');
-    for(let i=0;i<cartItemNames.length;i++){
-        if(cartItemNames[i].innerText==title){
-            alert('This item is already added to the cart');
-            return
+        let cartRow=document.createElement('div');
+        cartRow.textContent=title;
+        let cartItems=document.getElementsByClassName('cart-items')[0];
+        cartRow.classList.add('cart-row');
+        //making sure an item does not appear in the shopping cart more than once
+        let cartItemNames=cartItems.getElementsByClassName('cart-item-title');
+        for(let i=0;i<cartItemNames.length;i++){
+            if(cartItemNames[i].innerText==title){
+                alert('This item is already in the cart');
+                return;
+            }
         }
-
-    }
-    let cartRowContents=`<div class="cart-item cart-column">
-    <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
-    <span class="cart-item-title">${title}</span>
-</div>
-<span class="cart-price cart-column">${price}</span>
-<div class="cart-quantity cart-column">
-    <input class="cart-quantity-input" type="number" value="1">
-    <button class="btn btn-danger" type="button">REMOVE</button>
-</div>`
-    cartRow.innerHTML=cartRowContents;
-    cartItems.append(cartRow);
-    cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click',(event)=>{
-        buttonClicked=event.target;
+        let cartRowContents=`<div class="cart-item cart-column">
+        <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
+        <span class="cart-item-title">${title}</span>
+        </div>
+        <span class="cart-price cart-column">${price}</span>
+        <div class="cart-quantity cart-column">
+        <input class="cart-quantity-input" type="number" value="1">
+        <button class="btn btn-danger" type="button">REMOVE</button>
+        </div>`
+       
+        cartRow.innerHTML=cartRowContents;
+        cartItems.append(cartRow);
+        //remove cart rows and update the total
+        const buttonsClicked=document.querySelectorAll('.btn-danger');
+        buttonsClicked.forEach((buttonClicked)=>{
+        buttonClicked.addEventListener('click',(e)=>{
         buttonClicked.parentElement.parentElement.remove();
         updateCartTotal();
-    })
-    cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change',(event)=>{
-        let input=event.target;
-        if(isNaN(input.value)||input.value<=0){
-            input.value=1;
-        }
+        })})
+
+        
+         //update total when quantity changes
+         const quantityInputs=document.querySelectorAll('.cart-quantity-input');
+         quantityInputs.forEach((quantityInput)=>{
+         quantityInput.addEventListener(('change'),e=>{
+         if(isNaN(quantityInput.value) || quantityInput.value<=0){
+            quantityInput.value=1;
+         }
         updateCartTotal();
+          //remove cart rows and update the total
+          const buttonsClicked=document.querySelectorAll('.btn-danger');
+          buttonsClicked.forEach((buttonClicked)=>{
+          buttonClicked.addEventListener('click',(e)=>{
+          buttonClicked.parentElement.parentElement.remove();
+          updateCartTotal();
+
+
+
+    }
+                
+         
+            
+        )
+
     })
+           
+        })
+    })
+             updateCartTotal();
 
+       
+       
+   }
+    //making sure the quanity input is a number that is bigger than 0
+    const quantityInputs=document.querySelectorAll('.cart-quantity-input');
+    quantityInputs.forEach((quantityInput)=>{
+        quantityInput.addEventListener(('change'),e=>{
+            if(isNaN(quantityInput.value) || quantityInput.value<=0){
+                quantityInput.value=1;
+            }
+            updateCartTotal();
+        })
 
-}    
+    })
+    //purchase button
+    purchaseButton=document.querySelector('.btn-purchase');
+    console.log(purchaseButton);
+    purchaseButton.addEventListener('click',e=>{
+         let newTotal=document.getElementsByClassName('cart-total-price')[0].innerText.replace("SAR"," "); 
+         if(newTotal > 0){
+            alert('Thank you for your purchase');
+            let cartItems=document.querySelector('.cart-items');
+            while(cartItems.hasChildNodes()){
+            cartItems.removeChild(cartItems.firstChild);
+            updateCartTotal();
+            //remove cart rows and update the total
+          const buttonsClicked=document.querySelectorAll('.btn-danger');
+          buttonsClicked.forEach((buttonClicked)=>{
+          buttonClicked.addEventListener('click',(e)=>{
+          buttonClicked.parentElement.parentElement.remove();
+          updateCartTotal();
 
-const updateCartTotal=()=>{
-    let cartItemContainer=document.getElementsByClassName('cart-items')[0];
-    let cartRows=cartItemContainer.getElementsByClassName('cart-row');
-    let total=0;
-    for(let i=0;i<cartRows.length;i++){
-        let cartRow=cartRows[i];
-        let priceElement=cartRow.getElementsByClassName('cart-price')[0];
-        let quantityElement=cartRow.getElementsByClassName('cart-quantity-input')[0];
-        console.log(priceElement,quantityElement);
-        let price=parseFloat(priceElement.textContent.replace('SAR',''));
-        let quantity=quantityElement.value;
-        console.log(quantity*price);
-        total=total+(price*quantity);
-        window.total1=total;
+            })})}
+         }else{
+            alert('Sorry! you cart is empty');
+         }  
+
+        
+
+        
+    })
+    // update cart total(the total price)
+    const updateCartTotal=()=>{
+        let cartItemContainer=document.getElementsByClassName('cart-items')[0];
+        let cartRows=cartItemContainer.getElementsByClassName('cart-row');
+        let total=0;
+        for(let i=0;i<cartRows.length;i++){
+            let cartRow=cartRows[i];
+            let priceElement=cartRow.getElementsByClassName('cart-price')[0];
+            let quantityElement=cartRow.getElementsByClassName('cart-quantity-input')[0];
+            console.log(priceElement,quantityElement);
+            let price=parseFloat(priceElement.textContent.replace('SAR',''));
+            let quantity=quantityElement.value;
+            console.log(quantity*price);
+            total=total+(price*quantity);
+            window.total1=total;
+        }
+        total=Math.round(total*100)/100;
+        document.getElementsByClassName('cart-total-price')[0].innerText=total+"SAR";   
+    
+    
+    
     }
-    total=Math.round(total*100)/100;
-    document.getElementsByClassName('cart-total-price')[0].innerText=total+"SAR";   
+})    
+    
 
-
-
-}
-document.getElementsByClassName('btn-purchase')[0].addEventListener('click',()=>{
-    if(total1==0){
-        alert('Your shopping cart is empty');
-    }
-    else{
-        alert('Thank you for shopping with us');
-    }
-    let cartItems=document.getElementsByClassName('cart-items')[0];
-    while(cartItems.hasChildNodes()){
-        cartItems.removeChild(cartItems.firstChild);
-    }
-    updateCartTotal();
-}) 
+    
+  
+ 
 
 
 
@@ -169,3 +215,5 @@ document.getElementsByClassName('btn-purchase')[0].addEventListener('click',()=>
 
 
        
+
+
