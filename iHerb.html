@@ -40,7 +40,7 @@
            
         }
         #hamburger.hamburger-button{
-            margin-left: -1200px;
+            margin-left: -2680px;
         }
         img #nav-image .show{
             position: absolute;
@@ -71,6 +71,10 @@
 }
 #filter-by-category{
     margin-bottom: 20px;
+}
+#Products-List{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .shop-item-image {
@@ -203,6 +207,7 @@
     color: white;
     padding: .25em 0;
     height: 400px;
+    width: 100%;
 }
 
 .main-footer-container {
@@ -235,7 +240,7 @@
 }.shop-item-button{
     padding:5px;
 }
-@media(max-width:750px){
+@media(max-width:999px){
     /*nav{
         display: flex;
         flex-direction: column-reverse;
@@ -247,7 +252,7 @@
         display: none;
     }
     .hamburger{
-        margin-left: -420px;
+        margin-left: -890px;
         display: block;
         width: 40px;
         height: 45px;
@@ -257,12 +262,11 @@
         border: none;
 
 
-    }
-    .Products-List{
+    }#products-list{
         display: grid;
-        grid-template-columns: 1fr 1fr ;
+        grid-template-columns: 1fr 1fr 1fr;
     }
-
+   
 }
     </style>
 </head>
@@ -300,7 +304,7 @@
             <button  style="background-color: rgb(211, 43, 226);padding: 5px; color: white;border-radius: 5px;cursor: pointer"  class="Immunity">Immune System Support</button>
         </div>
     </div>
-    <div style="display: grid;grid-template-columns: 1fr 1fr 1fr 1fr;" id="Products-List" class="Products-List">
+    <div  id="Products-List" class="Products-List">
         <div style="text-align:center;border-style: solid;border-width: 4px;border-color: aliceblue;" class="All Cognition container"> <img src="Images/102.avif" class="shop-item-image"><h3 style="color:green" class="shop-item-title">Complete B-Complex</h3>
             <h4 style="color: blue;" class="shop-item-price">45SAR</h4><button style="margin-bottom: 50px;background-color: rgb(211, 43, 226);border-radius: 10px;border-color:rgb(211, 43, 226) ;cursor: pointer;color: white;" class="shop-item-button">ADD TO CART</button>
         </div>
